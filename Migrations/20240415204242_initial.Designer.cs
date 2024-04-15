@@ -11,7 +11,7 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Checkpont2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240415151400_initial")]
+    [Migration("20240415204242_initial")]
     partial class initial
     {
         /// <inheritdoc />

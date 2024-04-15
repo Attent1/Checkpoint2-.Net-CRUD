@@ -38,7 +38,20 @@ namespace Checkpont2.Controllers
             _context.Add(newUser);
             _context.SaveChanges();
 
-            return View();
+            return RedirectToAction("SignUpSuccess", new { userId = newUser.Id } );
+
+        }
+
+        public IActionResult SignUpSuccess(int userId)
+        {                                                    
+            User userFound = _context.TB_USERS.FirstOrDefault(u => u.Id == userId);
+
+            if (userFound == null)
+            {
+                return BadRequest("Usuário não existe");
+            }            
+            
+            return View(userFound);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
