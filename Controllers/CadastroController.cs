@@ -24,7 +24,7 @@ namespace Checkpont2.Controllers
             var user = _context.TB_USERS.FirstOrDefault(x => x.UserEmail == request.UserEmail);
             if (user != null)
             {
-                return BadRequest("Usuário já cadastrado");
+                return BadRequest("User already registered");
             }
 
             User newUser = new User
@@ -48,10 +48,39 @@ namespace Checkpont2.Controllers
 
             if (userFound == null)
             {
-                return BadRequest("Usuário não existe");
+                return BadRequest("User doesn't exist");
             }            
             
             return View(userFound);
+        }
+
+        public IActionResult Update(int id)
+        {
+            var user = _context.TB_USERS.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+            {
+                return BadRequest("User doesn't exist");
+            }
+
+            return View(user);
+
+        }
+
+        public IActionResult UpdateUser(User request)
+        {
+            var user = request;
+
+            user.Id = request.Id;
+            user.UserEmail = request.UserEmail;
+            user.UserName = request.UserName;
+            user.UserPassword = request.UserPassword;
+            user.UserOccupation = request.UserOccupation;            
+
+            _context.Update(user);            
+            _context.SaveChanges();
+
+            return RedirectToAction("SignUpSuccess", new { userId = user.Id });
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

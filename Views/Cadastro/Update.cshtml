@@ -8,11 +8,11 @@
         margin-bottom: 10px;
     }
 
-    .form-group label {
-        text-align: right;
-        width: 150px; 
-        margin-right: 10px;
-    }
+        .form-group label {
+            text-align: right;
+            width: 150px;
+            margin-right: 10px;
+        }
 
     .tamanhoInput {
         width: 400px;
@@ -20,7 +20,8 @@
 </style>
 
 <div>
-    <h3>Registered data</h3>
+    <h3>Your Information</h3>
+    <form asp-controller="Cadastro" asp-action="UpdateUser" method="put">
     <div class="form-group">
         <label for="userName">User name:</label>
         <input type="text" id="userName" class="border-2 tamanhoInput" name="userName" value="@Model.UserName" />
@@ -33,4 +34,12 @@
         <label for="userOccupation">Occupation:</label>
         <input type="text" id="userOccupation" class="border-2 tamanhoInput" name="userOccupation" value="@Model.UserOccupation" />
     </div>
+        <input type="hidden" id="userPassword" class="border-2 tamanhoInput" name="userPassword" value="@Model.UserPassword" />
+        <input type="hidden" id="id" class="border-2 tamanhoInput" name="id" value="@Model.Id" />
+        <div class="form-group row mb-2">
+            <div class="col-sm-10 offset-sm-2 me-10">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+    </form>
 </div>

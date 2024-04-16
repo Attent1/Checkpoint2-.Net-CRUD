@@ -23,16 +23,30 @@ namespace Checkpont2.Controllers
             var user = _context.TB_USERS.FirstOrDefault(x => x.UserEmail == request.UserEmail);
             if (user == null)
             {
-                return BadRequest("Email de usuário inexistente");
+                return BadRequest("Non-existent user email");
             }
 
             if (user.UserPassword != request.UserPassword)
             {
-                return BadRequest("Senha incorreta");
+                return BadRequest("Incorrect password");
             }
             
             return View(user);
         }
+
+        public IActionResult Delete(User request)
+        {
+            var user = _context.TB_USERS.FirstOrDefault(x => x.Id == request.Id);
+
+            if (user != null) 
+            {
+                _context.TB_USERS.Remove(user);
+                _context.SaveChanges();
+            }
+            
+            return View(user);
+        }
+
 
     }
 }
