@@ -1,0 +1,36 @@
+﻿@model User
+
+<style>
+    .form-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+        .form-group label {
+            text-align: right;
+            width: 150px;
+            margin-right: 10px;
+        }
+
+    .tamanhoInput {
+        width: 400px;
+    }
+</style>
+
+<div>
+    <h3>Login Success</h3>  
+    @* <div class="form-group">
+        <label for="userName">Nome de Usuário:</label>
+        <input type="text" id="userName" class="border-2 tamanhoInput" name="userName" value="@Model.UserName" />
+    </div> *@
+    <div class="form-group">
+        <label for="userEmail">E-mail:</label>
+        <input type="text" id="userEmail" class="border-2 tamanhoInput" name="userEmail" value="@Model.UserEmail"/>
+    </div>
+    <div class="form-group">
+        <label for="userOccupation">Ocupação:</label>
+        <input type="text" id="userOccupation" class="border-2 tamanhoInput" name="userOccupation" value="@Model.UserOccupation"/>
+    </div>
+</div>
